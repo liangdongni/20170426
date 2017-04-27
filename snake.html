@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			table{
+				margin: 50px auto;
+			}
+			table,td,tr{
+				border: 1px solid rgba(0,0,0,0.3);
+			}
+			td{
+				width: 18px;
+				height: 18px;
+			}
+			.red{
+				background-color: red;
+			}
+			.blue{
+				background-color: yellow;
+			}
+			h1{
+			text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="table">
+			
+		</table>
+		<h1>时间 <span id="sj">50</span></h1>					
+		<h1>分数 <span id="fs">0</span></h1>	
+	</body>
+	<script type="text/javascript">
+		var fs = document.getElementById("fs");
+		var sj = document.getElementById("sj");
+		var score = 0;
+		var timer = 50;
+		//绘制地图
+		var table = document.getElementById("table");
+		var maxTable = 20;
+		var tds = [];
+		for (var i = 0; i < maxTable; i++) {
+			//绘制行
+			var tr = document.createElement("tr");
+			var thistr = [];
+			for (var j = 0; j < maxTable; j++) {
+				//绘制列
+				var td = document.createElement("td");
+				tr.appendChild(td);
+				thistr.push(td);
+			}
+			tds.push(thistr);
+			table.appendChild(tr);
+		}
+		function Snake(){
+			this.x = parseInt(Math.random()* maxTable) ;
+			this.y = parseInt(Math.random()*16 + 4); 
+			this.bodyArr = [
+			{x:this.x,y:this.y+3},
+			{x:this.x,y:this.y+2},
+			{x:this.x,y:this.y+1},
+			{x:this.x,y:this.y},
+			];
+			this.render();
+			this.bingEvent();
+			this.direction = "right";
+		}
+		Snake.prototype.render = function(){
+			//渲染小蛇
+			for (var i = 0; i < maxTable; i++) {
+				for (var j = 0; j < maxTable; j++) {
+					tds[i][j].className = "";
+				}
+			}
+			//画出一条小蛇
+			for (var i = 0; i < this.bodyArr.length; i++) {
+				tds[this.bodyArr[i].x][this.bodyArr[i].y].className = "red";
+			}
+		}
+		//小蛇移动
+		Snake.prototype.move = function(){
+			this.bodyArr.pop();//删除尾部
+			//让蛇改变方向
+			this.add()	
+			//检查蛇的头是不碰到食物
+			if(this.bodyArr[0].x == food.x && this.bodyArr[0].y == food.y){
+				food.change();
+				snake.grow();
+			}
+		}
+		//方向键
+		Snake.prototype.bingEvent = function(){
+			var that = this;
+			document.onkeydown = function(event){
+				event = event||window.event;
+				switch (event.keyCode){
+					case 37:
+					if(that.direction == "right"){
+						return;
+					}
+					that.direction = "left";
+						break;
+					case 38:
+					if(that.direction == "down"){
+						return;
+					}
+					that.direction = "up";
+						break;
+					case 39:
+					if(that.direction == "left"){
+						return;
+					}
+					that.direction = "right";
+						break;
+					case 40:
+					if(that.direction == "up"){
+						return;
+					}
+					that.direction = "down";
+						break;	
+				}
+			}
+		}
+		//长大
+		
+		Snake.prototype.grow = function(){
+			this.add();
+			score ++;
+			fs.innerHTML = score * 10;
+		}
+		//公用函数
+		Snake.prototype.add = function(){
+			
+			switch (this.direction){
+				case "right":				
+				  this.bodyArr.unshift({				  	
+				  	x : this.bodyArr[0].x,
+				  	y : this.bodyArr[0].y + 1
+				  })
+					break;
+				case "up":
+				  this.bodyArr.unshift({
+				  	x : this.bodyArr[0].x - 1,
+				  	y : this.bodyArr[0].y
+				  })
+					break;
+				case "down":
+				  this.bodyArr.unshift({
+				  	x : this.bodyArr[0].x + 1,
+				  	y : this.bodyArr[0].y
+				  })
+					break;
+				case "left":
+				  this.bodyArr.unshift({
+				  	x : this.bodyArr[0].x,
+				  	y : this.bodyArr[0].y-1
+				  })
+					break;
+			}
+			//判断碰变
+			
+		}
+		//食物
+		function Food(){			
+			this.x = null;
+			this.y = null;
+			this.change();
+		}
+		//食物渲染
+		Food.prototype.render = function(){
+			tds[this.x][this.y].className = "blue";
+		}
+		//食物产生
+		Food.prototype.change = function(){
+			this.x = parseInt(Math.random()*19);
+			this.y = parseInt(Math.random()*19);
+			for (var i = 0; i < snake.bodyArr.length; i++) {
+				if(this.x == snake.bodyArr[i].x && this.y == snake.bodyArr[i].y){
+					this.change();
+				}
+			}
+		}
+		var snake = new Snake();
+		var food = new Food();
+		var num = 0;
+		var t = setInterval(function(){
+			
+			num ++;
+			if( timer ==0){
+				clearInterval(t);
+				alert("游戏结束");
+			}
+			if(num % 5 ==0){
+				timer --;
+				sj.innerHTML = timer;
+			}
+			if(snake.bodyArr[0].x > maxTable-1  ||snake.bodyArr[0].y<0||snake.bodyArr[0].y > maxTable-1 || snake.bodyArr[0].x < 0){
+					clearInterval(t);
+					alert("GAME OVER");					
+					return;
+				}else{
+					//蛇渲染
+			snake.render();
+			//蛇移动
+			snake.move();
+			//食物渲染
+			food.render();
+				}
+		},200)
+	</script>
+</html>
