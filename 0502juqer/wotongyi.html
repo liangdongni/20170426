@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	  <input class="box1" type="checkbox" name="" value="">
+      	<input type="button" name="" id="tijiao" value="提交"/>
+    </body>
+    <script type="text/javascript">
+	
+       	$('#tijiao').click(function(){
+       		if($(".box1").prop("checked")){
+       			alert("有同意")
+       		}else{
+       			alert('没有同意')
+       		}  		
+       	})
+
+    </script>
+
+</html>
