@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>message</title>
+    <style>
+        .now {
+            cursor: pointer;
+            color: blue;
+        }
+        
+        .rew {
+            cursor: pointer;
+            color: yellowgreen;
+        }
+        
+        textarea {
+            border: 1px solid purple;
+            margin-left: 200px;
+            margin-top: 50px;
+            resize: none;
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            top: 100px;
+            left: 200px
+        }
+        
+        #updata {
+            width: 100%;
+            height: 600px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        
+        #updata input {
+            position: absolute;
+            top: 370px;
+            left: 520px;
+            width: 100px;
+            height: 50px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <div id="updata">
+        <textarea rows="10" cols="50" id="textarea"></textarea>
+        <input type="button" name="" id="bc" value="保存">
+    </div>
+
+    <table>
+        <tr>
+            <td>姓名：</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>留言：</td>
+            <td><input type="text" id="memo"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="保存" onclick="saveData()"></td>
+        </tr>
+    </table>
+    <hr>
+    <table id="datatable" border="1">
+    </table>
+    <p id="msg"></p>
+</body>
+<script>
+    var datatable = null;
+    var now = document.getElementsByClassName('now');
+    var db = openDatabase("MyData", "", "My Database", 1024 * 100); //创建数据库名
+    var updata = document.getElementById('updata');
+    var rew = document.getElementsByClassName('rew');
+    var bc = document.getElementById('bc');
+    var textarea = document.getElementById('textarea');
+    console.log(updata);
+
+    function init() {
+        datatable = document.getElementById("datatable");
+        showAllData();
+    }
+
+    function removeAllData() {
+        for (var i = datatable.childNodes.length - 1; i >= 0; i--) {
+            datatable.removeChild(datatable.childNodes[i]);
+
+        }
+        var tr = document.createElement("tr");
+        var th1 = document.createElement("th");
+        var th2 = document.createElement("th");
+        var th3 = document.createElement("th");
+        var th4 = document.createElement("th");
+        var th5 = document.createElement("th");
+        var th6 = document.createElement("th");
+        th1.innerHTML = "id";
+        th2.innerHTML = "姓名";
+        th3.innerHTML = "留言";
+        th4.innerHTML = "时间";
+        th5.innerHTML = "编辑";
+        th6.innerHTML = "删除";
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        tr.appendChild(th3);
+        tr.appendChild(th4);
+        tr.appendChild(th5);
+        tr.appendChild(th6);
+        datatable.appendChild(tr);
+    }
+
+    function showData(row) {
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        td1.innerHTML = row.rowid;
+        var td2 = document.createElement("td");
+        td2.innerHTML = row.name;
+        var td3 = document.createElement("td");
+        td3.innerHTML = row.message;
+        var td4 = document.createElement("td");
+        var t = new Date();
+        t.setTime(row.time);
+        td4.innerHTML = t.toLocaleDateString() + " " + t.toLocaleTimeString();
+        var td5 = document.createElement("td");
+        td5.innerHTML = '编辑';
+        td5.classList.add('rew');
+        var td6 = document.createElement("td");
+        td6.innerHTML = '删除';
+        td6.classList.add('now');
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+        datatable.appendChild(tr);
+
+        function deleteData() { //删除
+            for (var i = 0; i < now.length; i++) {
+                now[i].index = i;
+                now[i].onclick = function() {
+                    index = this.index;
+                    del(index);
+                    showAllData();
+                }
+
+            }
+        }
+        deleteData();
+
+        function upData() { //编辑
+            for (var i = 0; i < rew.length; i++) {
+                rew[i].index = i;
+                rew[i].onclick = function() {
+                    updata.style.display = 'block';
+                    index1 = this.index;
+                    bc.onclick = function() {
+                        updata.style.display = "";
+                        var messages = textarea.value;
+                        upmess(messages, index1);
+                    }
+                    showAllData();
+                }
+
+            }
+        }
+        upData();
+    }
+
+    function showAllData() {
+        db.transaction(function(tx) {
+            tx.executeSql("CREATE TABLE IF NOT EXISTS MyData(name TEXT,message TEXT,time INTEGER)");
+            tx.executeSql("SELECT rowid,name,message,time FROM MyData", [], function(tx, rs) {
+                removeAllData();
+                for (var i = 0; i < rs.rows.length; i++) {
+                    showData(rs.rows.item(i));
+                }
+            })
+        })
+    }
+
+    function addData(name, message, time) {
+        db.transaction(function(tx) {
+            tx.executeSql("INSERT INTO MyData VALUES(?,?,?)", [name, message, time], function(tx, rs) {
+                    alert("成功");
+                    location.href = "message1.html"
+                },
+                function(tx, error) {
+                    alert(error.source + "::" + error.message);
+                }
+            )
+        })
+    }
+
+    function saveData() {
+        var name = document.getElementById("name").value;
+
+        var memo = document.getElementById("memo").value;
+        var time = new Date().getTime();
+        addData(name, memo, time);
+        showAllData();
+    }
+
+    function del(index) {
+        db.transaction(function(tx) {
+            tx.executeSql("select rowid from MyData", [], function(tx, rs) {
+                tx.executeSql("DELETE FROM MyData WHERE rowid = ? ", [rs.rows.item(index).rowid], function(tx, rs) {})
+            })
+
+
+        })
+    }
+
+    function upmess(upmessage, index) { //更新数据
+        db.transaction(function(tx) {
+            tx.executeSql("select rowid from MyData", [], function(tx, rs) {
+                tx.executeSql("update MyData set message = ? where  rowid = ? ", [upmessage, rs.rows.item(index).rowid], function(tx, rs) {
+                    alert("更改成功");
+                    location.href = "message1.html";
+                })
+            })
+        })
+    }
+</script>
+
+</html>
