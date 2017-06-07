@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .banner {
+            width: 800px;
+            height: 400px;
+            margin: 100px auto;
+            perspective: 1000px;
+        }
+        
+        .box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+        
+        .now {
+            animation: zhuan 2s linear infinite;
+        }
+        
+        .box li {
+            position: absolute;
+            width: 350px;
+            height: 220px;
+            background-color: yellow;
+            top: 100px;
+            left: 250px;
+            box-shadow: inset 0 0 5px #bbb;
+            text-align: center;
+            line-height: 220px;
+            font-size: 60px;
+            font-weight: bolder;
+        }
+        
+        .box li img {
+            width: 350px;
+            height: 220px;
+        }
+        
+        .box .li1 {
+            transform: rotateY(0deg) translateZ(340px);
+        }
+        
+        .box .li2 {
+            transform: rotateY(60deg) translateZ(340px);
+        }
+        
+        .box .li3 {
+            transform: rotateY(120deg) translateZ(340px);
+        }
+        
+        .box .li4 {
+            background-color: blue;
+            transform: rotateY(180deg) translateZ(340px);
+        }
+        
+        .box .li5 {
+            transform: rotateY(240deg) translateZ(340px);
+        }
+        
+        .box .li6 {
+            transform: rotateY(300deg) translateZ(340px);
+        }
+        
+        @keyframes zhuan {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul class="box">
+            <li class="li1"><img src="../img/1.jpg" alt=""></li>
+            <li class="li2"><img src="../img/2.jpg" alt=""></li>
+            <li class="li3"><img src="../img/3.jpg" alt=""></li>
+            <li class="li4"><img src="../img/4.jpg" alt=""></li>
+            <li class="li5"><img src="../img/5.jpg" alt=""></li>
+            <li class="li6"><img src="../img/3.jpg" alt=""></li>
+        </ul>
+
+
+    </div>
+</body>
+<script>
+    var list = document.getElementsByTagName('li');
+    var box = document.getElementsByClassName('box')[0];
+    box.onmousemove = function() {
+        box.style.animation = "zhuan 10s linear infinite";
+    }
+    box.onmouseout = function() {
+        box.style.animation = "";
+    }
+</script>
+
+</html>

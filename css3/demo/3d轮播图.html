@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3d轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .banner {
+            width: 100%;
+            height: 300px;
+            position: relative;
+        }
+        
+        .wrap {
+            width: 350px;
+            height: 220px;
+            margin: 100px auto;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-perspective: 1000px;
+            -moz-perspective: 1000px;
+            -o-perspective: 1000px;
+            -ms-perspective: 1000px;
+            perspective: 1000px;
+        }
+        
+        .banner .wrap li {
+            width: 350px;
+            height: 220px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        /*.no1 {
+            transform: translateX(0px) translateZ(0px) rotateY(0deg);
+        }*/
+        
+        li.no1 {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0px) translateY(0px) translateZ(0px);
+        }
+        
+        li.no2 {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(200px) rotateY(-45deg) translateZ(-200px);
+        }
+        
+        li.no3 {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(450px) rotateY(-45deg) translateZ(-300px);
+        }
+        
+        li.no4 {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-450px) rotateY(45deg) translateZ(-300px);
+        }
+        
+        li.no5 {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-200px) rotateY(45deg) translateZ(-200px);
+        }
+        
+        .banner .wrap li img {
+            width: 350px;
+            height: 220px;
+        }
+        
+        nav {
+            width: 100px;
+            position: absolute;
+            z-index: 100;
+            bottom: 0px;
+            left: 50%;
+        }
+        
+        nav span {
+            display: block;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            opacity: 0.8;
+            background-color: rgba(0, 0, 0, 0.5);
+            float: left;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul class="wrap">
+            <li class="no1"><img src="../img/1.jpg" alt=""></li>
+            <li class="no2"><img src="../img/2.jpg" alt=""></li>
+            <li class="no3"><img src="../img/3.jpg" alt=""></li>
+            <li class="no4"><img src="../img/4.jpg" alt=""></li>
+            <li class="no5"><img src="../img/5.jpg" alt=""></li>
+        </ul>
+        <nav>
+            <span class="btn shang">&lt</span>
+            <span class="btn next">&gt</span>
+        </nav>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $(function() {
+        $('.btn').click(function() {
+            var btnIndex = $(this).index(),
+                picElement = $('li'), //获取到li
+                picNum = picElement.length, //获取数组长度
+                lastPic = picElement.eq(picNum - 1).attr('class'), //获取最后一张的classname
+                firstPic = picElement.eq(0).attr('class'), //获取第一张classname
+                temp;
+            // console.log(btnIndex);
+            // console.log(picElement);
+            // console.log(picNum);
+            if (btnIndex == 1) { //下一张
+                for (var index = picNum; index >= 0; index--) {
+                    temp = picElement.eq(index - 1).attr('class'); //获取所有classname
+                    console.log(temp);
+                    if (index == 0) {
+                        picElement.eq(index).attr('class', lastPic);
+                    } else {
+                        picElement.eq(index).attr('class', temp);
+                    }
+                }
+            } else { //上一张
+                for (var j = 0; j < picNum; j++) {
+                    temp = picElement.eq(j + 1).attr('class'); //获取除过当前的其余classname
+                    console.log(temp);
+                    if (j == picNum - 1) {
+                        picElement.eq(j).attr('class', firstPic);
+                    } else {
+                        picElement.eq(j).attr('class', temp);
+                    }
+                }
+            }
+        })
+    })
+</script>
+
+
+</html>
