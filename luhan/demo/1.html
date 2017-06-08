@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: #000;
+            perspective: 1800px;
+        }
+        
+        #box {
+            transform-style: preserve-3d;
+            width: 350px;
+            height: 350px;
+            margin-top: 150px;
+            position: relative;
+            margin-left: 180px;
+            animation: xuanzhuan 5s linear 1;
+            transform-origin: 175px 100px;
+        }
+        
+        #box2 {
+            transform-style: preserve-3d;
+            transform-origin: 175px 100px;
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin-top: -410px;
+            margin-left: 800px;
+            float: left;
+            animation: xuanzhuan 5s linear 1;
+        }
+        
+        .box {
+            transform-style: preserve-3d;
+            width: 350px;
+            height: 350px;
+            margin: 100px auto 0;
+            position: relative;
+            animation: xuanzhuan1 5s linear 1 reverse 5s;
+        }
+        
+        .zhengfangxing {
+            transform-style: preserve-3d;
+            width: 350px;
+            height: 350px;
+            margin: 100px auto 0;
+            position: relative;
+            animation: xuanzhuan2 5s linear infinite 15s;
+        }
+        
+        @keyframes xuanzhuan2 {
+            from {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+        
+        @keyframes xuanzhuan1 {
+            from {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+        
+        @keyframes xuanzhuan {
+            0% {
+                transform: rotateY(0deg);
+            }
+            16.6% {
+                transform: rotateY(60deg);
+            }
+            33.2% {
+                transform: rotateY(120deg);
+            }
+            49.8% {
+                transform: rotateY(180deg);
+            }
+            66.4% {
+                transform: rotateY(240deg);
+            }
+            83% {
+                transform: rotateY(300deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        img {
+            width: 268px;
+            height: 288px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            -webkit-box-reflect: below 10px -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1) 100%);
+        }
+        
+        img:nth-child(1) {
+            transform: rotateY(0deg) translateZ(252px);
+            animation: xz1 5s ease 1 10s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes xz1 {
+            from {
+                transform: translateZ(252px);
+            }
+            to {
+                transform: translateZ(152px);
+            }
+        }
+        
+        img:nth-child(2) {
+            transform: rotateY(60deg) translateZ(252px);
+            animation: xz2 5s ease 1 10s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes xz2 {
+            from {
+                transform: rotateY(60deg) translateZ(252px);
+            }
+            to {
+                transform: rotateY(90deg) translateZ(152px);
+            }
+        }
+        
+        img:nth-child(3) {
+            transform: rotateY(120deg) translateZ(252px);
+            animation: xz3 5s ease 1 10s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes xz3 {
+            from {
+                transform: rotateZ(120deg) translateZ(252px);
+            }
+            to {
+                transform: rotateX(90deg) translateZ(152px);
+            }
+        }
+        
+        img:nth-child(4) {
+            transform: rotateY(180deg) translateZ(252px);
+            animation: xz4 5s ease 1 10s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes xz4 {
+            from {
+                transform: translateZ(252px);
+            }
+            to {
+                transform: translateZ(-152px);
+            }
+        }
+        
+        img:nth-child(5) {
+            transform: rotateY(240deg) translateZ(252px);
+            animation: xz5 5s ease 1 10s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes xz5 {
+            from {
+                transform: rotateY(240deg) translateZ(252px);
+            }
+            to {
+                transform: rotateX(-90deg) translateZ(152px);
+            }
+        }
+        
+        img:nth-child(6) {
+            transform: rotateY(300deg) translateZ(252px);
+            animation: xz6 5s ease 1 10s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes xz6 {
+            from {
+                transform: rotateY(300deg) translateZ(252px);
+            }
+            to {
+                transform: rotateY(270deg) translateZ(152px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="box">
+            <div class="zhengfangxing">
+                <img src="../images/2.jpg" alt="">
+                <img src="../images/1.jpg" alt="">
+                <img src="../images/3.jpg" alt="">
+                <img src="../images/4.jpg" alt="">
+                <img src="../images/5.jpg" alt="">
+                <img src="../images/6.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="box2">
+        <div class="box">
+            <div class="zhengfangxing">
+                <img src="../images/8.jpg" alt="">
+                <img src="../images/7.jpg" alt="">
+                <img src="../images/9.jpg" alt="">
+                <img src="../images/10.jpg" alt="">
+                <img src="../images/11.jpg" alt="">
+                <img src="../images/12.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <audio autoplay>
+        <source src="../images/鹿晗 - 鹿店长的炸鸡酷炫之歌.mp3" type="">
+    </audio>
+</body>
+
+
+
+</html>
