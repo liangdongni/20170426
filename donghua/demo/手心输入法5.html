@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .stage {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            perspective: 1000px;
+        }
+        
+        .stage .win {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            transform: translateZ(0px) translateY(0px) rotateZ(0deg);
+            animation: win1 1s ease-in-out;
+        }
+        
+        .stage .win .elem {
+            width: 231px;
+            height: 119px;
+            background: url(../img/text.png) no-repeat -271px -94px;
+            position: absolute;
+            left: 270px;
+            top: 200px;
+            opacity: 1;
+        }
+        
+        .stage .win .lamp {
+            width: 225px;
+            height: 220px;
+            background: url(../img/page.png) no-repeat -239px 0;
+            position: absolute;
+            top: 140px;
+            left: 930px;
+            opacity: 1;
+            transform: translateX(400px) translateY(-500px);
+            animation: lamp1 0.5s linear infinite;
+        }
+        
+        .stage .win .l1 {
+            width: 156px;
+            height: 153px;
+            background: url(../img/page.png) no-repeat -239px -220px;
+            position: absolute;
+            top: 260px;
+            left: 680px;
+            opacity: 0;
+            transform: translateX(0px) translateY(0px);
+            animation: breath 0.3s linear infinite;
+        }
+        
+        .stage .win .l2 {
+            width: 75px;
+            height: 73px;
+            background: url(../img/page.png) no-repeat -165px -150px;
+            position: absolute;
+            top: 180px;
+            left: 900px;
+            opacity: 0;
+            transform: translateX(0px) translateY(0px);
+            animation: breath 0.3s linear infinite;
+        }
+        
+        .stage .win .l3 {
+            width: 156px;
+            height: 153px;
+            background: url(../img/page.png) no-repeat -239px -373px;
+            position: absolute;
+            top: 375px;
+            left: 960px;
+            opacity: 0;
+            transform: translateX(0px) translateY(0px);
+            animation: breath 0.3s ease-in-out infinite;
+        }
+        
+        .stage .win .l4 {
+            width: 94px;
+            height: 93px;
+            background: url(../img/page.png) no-repeat -395px -220px;
+            position: absolute;
+            top: 330px;
+            left: 1110px;
+            opacity: 0;
+            transform: translateX(0px) translateY(0px);
+            animation: breath 0.3s linear infinite;
+        }
+        
+        @-webkit-keyframes win1 {
+            0% {
+                opacity: 0;
+                transform: translateZ(500PX) translateY(-500PX) rotateY(-50deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateZ(0PX) translateY(0PX) rotateY(0deg);
+            }
+        }
+        
+        @-webkit-keyframes lamp1 {
+            0% {
+                transform: translateX(-15PX) translateY(-12PX);
+            }
+            /*50% {
+                transform: translateX(15PX) translateY(12PX);
+            }*/
+            100% {
+                transform: translateX(15PX) translateY(12PX);
+            }
+        }
+        
+        @-webkit-keyframes breath {
+            0% {
+                opacity: 0;
+                transform: translateX(300px) translateY(-300px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(0px) translateY(0px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(300px) translateY(-300px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="win">
+            <div class="elem"></div>
+            <div class="lamp"></div>
+            <div class="l1"></div>
+            <div class="l2"></div>
+            <div class="l3"></div>
+            <div class="l4"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
