@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #666;
+            /*background: url(../img/11.jpg);*/
+        }
+        
+        p {
+            margin-top: -600px;
+            margin-left: 700px;
+        }
+        
+        img {
+            margin-top: -180px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="640" height="734"></canvas>
+    <p>姓名<input type="text" name="" value="" id="input">
+        <button type="button" id="btn">提交</button>
+    </p>
+    <img src="../img/11.jpg" alt="">
+</body>
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+    var input = document.getElementById("input");
+    var btn = document.getElementById("btn");
+    var img = document.getElementsByTagName("img")[0];
+    btn.onclick = function() {
+
+        var text = input.value;
+        if (text.length > 0) {
+            ctx.drawImage(img, 0, 0, 640, 735, 0, 0, 640, 735)
+            ctx.font = "40px 微软雅黑";
+            ctx.fillText(text, 130, 230);
+        }
+        // console.log(text);
+
+    }
+    canvas.onclick = function() {
+        var image = new Image();
+        image.src = canvas.toDataURL("image/png");
+        window.open(canvas.toDataURL());
+    }
+</script>
+
+</html>
