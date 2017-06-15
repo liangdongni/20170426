@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    background-color: #F6F6F6;
+}
+
+@media(min-width:320px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media(min-width:340px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media(min-width:440px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+div,
+.nav .col>a,
+.col {
+    display: block;
+    box-sizing: border-box;
+}
+
+#seach {
+    width: 100%;
+    height: 3rem;
+}
+
+#seach input {
+    width: 85%;
+    height: 2rem;
+    margin-top: 0.5rem;
+    margin-left: 2%;
+    outline: none;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+#seach a {
+    display: block;
+    float: right;
+    width: 10%;
+    height: 2rem;
+    margin-top: 0.5rem;
+    text-align: left;
+    line-height: 2rem;
+}
+
+#banner {
+    width: 100%;
+    height: 6rem;
+    overflow: hidden;
+}
+
+#banner img {
+    width: 100%;
+    height: 6rem;
+}
+
+.nav {
+    padding: 4px;
+    margin-bottom: 4px;
+}
+
+.nav .row {
+    margin-bottom: 4px;
+    height: 6rem;
+    border-radius: 0.3rem;
+}
+
+.row {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+}
+
+.col,
+.row {
+    width: 100%;
+}
+
+.row1 {
+    background-color: #FF697A;
+}
+
+.row2 {
+    background-color: #3D98FF;
+}
+
+.row3 {
+    background-color: #44C522;
+}
+
+.row4 {
+    background-color: #FC9720;
+}
+
+.nav .col:nth-child(1) {
+    border-left: none;
+}
+
+.nav .row:nth-child(1) .col:first-of-type a {
+    height: 100%;
+}
+
+.nav .col>a {
+    display: block;
+    height: 50%;
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+    line-height: 3em;
+    white-space: nowrap;
+}
+
+.nav .col a+a {
+    border-top: 1px solid #fff;
+}
+
+.nav .col {
+    border-left: 1px solid #fff;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+}
+
+.col33 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.3333%;
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+}
+
+.nav .row:last-of-type {
+    margin-bottom: 0;
+}
+
+.subNav-entry {
+    padding: 0 4px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    border-radius: 0.3rem;
+}
+
+.subNav-entry .col {
+    margin-bottom: 1px;
+}
+
+.col25 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    -webkit-box-flex: 0;
+}
+
+.subNav-entry .col a {
+    position: relative;
+    display: block;
+    height: 26px;
+    margin-right: 1px;
+    padding-top: 34px;
+    background: #fff;
+    text-align: center;
+    font-size: .85em;
+}
+
+.sales-box {
+    margin-bottom: 8px;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-width: 1px 0;
+}
+
+.sales-box .sales-hd {
+    padding: 0 8px;
+    background: #fff;
+    height: 3rem;
+    line-height: 3rem;
+    overflow: hidden;
+}
+
+.col-50 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
