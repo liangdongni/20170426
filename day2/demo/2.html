@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="../img/1.gif" alt="">
+
+</body>
+<script>
+    var img = document.querySelector('img');
+    var x, y;
+    var nowX = 0;
+    var nowY = 0;
+    img.addEventListener("touchstart", function(ev) {
+        ev.preventDefault();
+        x = ev.touches[0].clientX - nowX;
+        y = ev.touches[0].clientY - nowY;
+    })
+    document.addEventListener("touchmove", function(ev) {
+
+        nowX = ev.touches[0].clientX - x;
+        nowY = ev.touches[0].clientY - y;
+        img.style.left = nowX + "px";
+        img.style.top = nowY + "px";
+    })
+</script>
+
+</html>
