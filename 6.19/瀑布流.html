@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">-->
+    <!--<link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">-->
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .infinite-scroll-preloader {
+            margin-top: -20px;
+        }
+        
+        .content {
+            width: 100%;
+            height: auto;
+        }
+        
+        .item-title img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <!-- 添加 class infinite-scroll 和 data-distance  向下无限滚动可不加infinite-scroll-bottom类，这里加上是为了和下面的向上无限滚动区分-->
+        <div class="content infinite-scroll infinite-scroll-bottom" data-distance="100">
+            <div class="list-block">
+                <ul class="list-container">
+                </ul>
+            </div>
+            <!-- 加载提示符 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script>
+    var page = 5;
+    var page_size = 30;
+
+    function getPage() {
+        $.ajax({
+            type: "get",
+            url: "http://yx.xianjian.com/p/api.php?method=wf&api_key=nimakdkeiLdkfen2lidkdlDLLEKd&page=" + page + "&per_page=" + page_size + "&tag=&type=5&order=2&_ksTS=1494831333062_78&jsoncallback=liang",
+            dataType: 'jsonp',
+            jsonpCallback: "liang",
+            success: function(data) {
+
+                var obj = data.photos.photo;
+                console.log(obj);
+                var html = '';
+                $.each(obj, function(index, value) {
+                    var ext = obj[index].url.substr(-3);
+                    if (ext == 'FLV') {
+                        url = 'http://files.haohaowan.com/yxxj/sp_' + obj[index].url + '.jpg';
+                        console.log(url);
+                    }
+                    if (ext == 'flv') {
+                        url = 'http://files.haohaowan.com/yxxj/yy_r3.jpg';
+                    }
+                    if (ext == 'jpg') {
+                        url = 'http://files.haohaowan.com/yxxj/li_' + obj[index].url;
+                        console.log(url);
+                    }
+                    html += '<li class="item-content"><div class="item-inner"><div class="item-title"><img src="' + url + '" /></div></div></li>';
+                })
+                $('.infinite-scroll-bottom .list-container').append(html);
+            }
+
+        })
+    }
+    var flag = true;
+    $(window).scroll(function(event) {
+        if (!flag) {
+            return
+        }
+        var foot = $(window).scrollTop() >= $(document).height() - $(window).height() - 100;
+        if (foot) {
+            page++;
+            getPage();
+            flag = false;
+        }
+    })
+    getPage();
+    $.init();
+</script>
+
+</html>

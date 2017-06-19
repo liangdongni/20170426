@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        /*顶部*/
+        
+        .navbar-app {
+            padding: 15px 0;
+            background-color: transparent;
+            position: absolute;
+            border: 0;
+        }
+        
+        .navbar-app .navbar-brand img {
+            width: 97px;
+            height: 30px;
+        }
+        
+        .herobanner_content {
+            padding: 180px 0;
+            text-align: left;
+        }
+        
+        .navbar-app .navbar-nav>li a {
+            color: #545e6b;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .navbar-app .navbar-nav>li a:hover {
+            color: #F8B08D;
+        }
+        /*headre*/
+        
+        .btn-main,
+        .btn-theme {
+            border-radius: 50px;
+            -webkit-transition: background-color .15s linear, color .15s linear;
+            -moz-transition: background-color .15s linear, color .15s linear;
+            -o-transition: background-color .15s linear, color .15s linear;
+            -ms-transition: background-color .15s linear, color .15s linear;
+            background-color: #F8B08D;
+        }
+        
+        .btn-theme {
+            padding: 15px 30px;
+            transition: background-color .15s linear, color .15s linear;
+            font-size: 18px;
+            font-weight: 600;
+            color: #FFF;
+        }
+        
+        .btn-theme:hover {
+            color: #fff;
+            background-color: #D7855F;
+        }
+        /*wrap*/
+        
+        .wrapper {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .background_color {
+            background-color: #F9FAFB;
+            padding: 30px 0 60px;
+        }
+        
+        .wrap_content_logo {
+            padding: 60px 0 50px;
+        }
+        
+        .img-responsive {
+            margin: 0 auto;
+            background-size: cover;
+        }
+        
+        .carousel-inner>.item>a>img,
+        .carousel-inner>.item>img,
+        .img-responsive,
+        .thumbnail a>img,
+        .thumbnail>img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        /*wrapper_content*/
+.wrapper_content {
+    margin: 80px 0;
+}
+        .title-lp {
+    margin: 60px 0;
+}
+.header, .title-lp {
+    text-align: center;
+}
+.margin-tb {
+    padding-top: 30px;
+}
+.product_icon {
+    width: 86px;
+    height: 86px;
+}
+p {
+    padding: 10px 0;
+}
+p, ul {
+    font-size: 16px;
+    line-height: 18pt;
+    color: #606B77;
+    font-weight: 400;
+}
+p {
+    margin: 0 0 10px;
+}
+h1, h2, h3, h4 {
+    font-weight: 600;
+}
+.background_color {
+    background-color: #F9FAFB;
+    padding: 30px 0 60px;
+}
+h2 {
+    font-size: 28px;
+    line-height: 32px;
+}
+h4 {
+    font-size: 16px;
+    margin: 30px 0 0;
+}
+.background_highlighted {
+    background-color: #F8B08D;
+}
+.wrap_content {
+    padding: 80px 0;
+}
+.wrap_content h2 {
+    margin-bottom: 100px;
+}
+.background_highlighted .btn-theme {
+    color: #fff;
+    background-color: #D7855F;
+}
+.background_highlighted .btn-theme:hover{
+    color: #D7855F;
+    background-color: #fff;
+}
+    </style>
+</head>
+
+<body rlt="1">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-app">
+        <div class="container">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img src="img/steer-logo.png" alt="Steer logo">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/">Benefits</a>
+                        </li>
+                        <li>
+                            <a href="/">Pricing</a>
+                        </li>
+                        <li>
+                            <a href="/">About</a>
+                        </li>
+                        <li>
+                            <a href="/">Log in</a>
+                        </li>
+                        <li></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1 herobanner_content">
+                    <div class="col-md-6">
+                        <h1>Help your remote team stay happy and productive</h1>
+                        <p>
+                            Collaborative and productive daily stand-ups and weekly check-ins to get the pulse of your team.
+                        </p>
+                        <button class="btn btn-theme" data-toggle="modal" data-target="#request-demo-modal">Get a demo</button>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="img/herobanner-new.png" alt="One on One Check-ins to know the pulse and engagement of your team">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="wrap_content_logo text-center background_color">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
+                    <div class="col-md-3">
+                        <img class="img-responsive" style="width:181px; height:47px;" src="img/chargify-logo.png" alt="Chargify logo">
+                    </div>
+                    <div class="col-md-3">
+                        <img class="img-responsive" style="width:153px; height:36px;" src="img/audiense-logo.png" alt="Audiense logo">
+                    </div>
+                    <div class="col-md-3">
+                        <img class="img-responsive" style="width:224px; height:38px;" src="img/pointclickcare-logo.png" alt="PointClickCare logo">
+                    </div>
+                    <div class="col-md-3">
+                        <img class="img-responsive" style="width:90px; height:58px;" src="img/olark-logo.png" alt="Olark logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper wrapper_content">
+        <div class="row title-lp">
+            <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+                <h2>We help you have less meetings, so you can achieve more</h2>
+            </div>
+        </div>
+        <div class="row wrapper_content">
+            <div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
+                <div class="col-md-6">
+                    <div class="product_icon">
+                        <img class="img-responsive" src="img/daily-standup-icon.png" alt="Daily standup on autopilot" style="width:86px; height: 86px;">
+                    </div>
+                    <h3>Productive daily stand-ups</h3>
+                    <div>
+                        <p>Keep track of what everyone’s working on, and what they’ve accomplished.</p>
+                    </div>
+                    <a href="#" class="btn btn-theme">Learn more</a>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-responsive" src="img/standup.gif" alt="Select at what time do you want to send the questions" style="border: 1px solid #EEE; border-radius: 4px">
+                </div>
+            </div>    
+        </div>
+        <div class="margin-tb"></div>
+        <div class= "row wrapper_content">
+            <div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
+                <div class="col-md-6">
+                    <img class="img-responsive" src="img/checkin-report.gif" alt="Steer to help you with the employee engagement and feedback" style="border: 1px solid #EEE; border-radius: 4px"> 
+                </div>
+                <div class="col-md-6">
+                    <div class="product_icon">
+                        <img class="class="img-responsive"" src="img/one-on-one-icon.png" alt="One on One meetings to know the engagement of your team" style="width:86px; height: 86px; margin: 0 auto;">
+                    </div>
+                    <h3>Effective One on One's</h3>
+                    <div>
+                        <p>
+                            Individual and private weekly check-ins with every member of your team, to keep track of the engagement.
+                        </p>
+                    </div>
+                    <a href="#" class="btn btn-theme">Learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class= "margin-tb"></div>
+        <div class = "row wrapper_content">
+            <div class= "col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
+                <div class = "col-md-6">
+                    <div class = "product_icon">
+                        <img class="img-responsive" src="img/slack-integration.png" alt="Daily standup on autopilot" style="width:86px; height: 86px;">
+                    </div>
+                    <h3>Slack integration</h3>
+                    <div>
+                        <p>Simplify direct reports and communication, and boost team morale and engagement right from Slack.</p>
+                    </div>
+                    <a href="#" class="btn btn-theme">Learn more</a>
+                </div>
+                <div class = "col-md-6">
+                    <img class="img-responsive" src="img/standups-slack.png" alt="Daily stand-ups through Slack" style= "border: 1px solid #EEE; border-radius: 4px">
+                </div>
+            </div>
+        </div>
+        <div class = "margin-tb"></div>
+        <div class = "wrapper text-center background_color">
+            <div class="row title-lp">
+                <div class = "col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+                    <h2>Why managers love us</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col-lg-8 col-xs-offset-2">
+                    <p>I'd highly recommend Steer. It's an awesome way to conduct 1-1 meetings with your team, and they also added a daily standup feature which is great. I'm really impressed by the ease of use and support. Keeping up with your team's satisfaction levels is vital when it comes to employee retention.</p>
+                    <h4>Hannah Wright — co-founder of HRpartner</h4>
+                    <img class="img-responsive" src="img/hannah-testimonial.png" alt="Effective Daily standup with your team members" style="width:80px; height:80px; margin-top: 20px;">
+                </div>
+            </div>
+        </div>
+        <div class= "wrapper">
+            <div class = "wrap_content text-center background_highlighted">
+                <div class = "row">
+                    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+                        <h2 style="color: white">Meetings and low engaged employees are bad for your business</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
+                        <div class= "col-md-4">
+                            <h1 style= "color:white">69%</h1>
+                            <p style="color: white">Percentage of all employees are not fully engaged.</p>
+                        </div>
+                        <div class= "col-md-4">
+                            <h1 style= "color:white">40</h1>
+                            <p style="color: white">Days per year you save by avoiding the daily standup meeting.</p>
+                        </div>
+                        <div class= "col-md-4">
+                            <h1 style= "color:white">50%</h1>
+                            <p style="color: white">Of employees leave their managers, not their jobs.</p>
+                        </div>
+                        <div class= "col-md-12">
+                            <button class="btn btn-theme" data-toggle="modal" data-target="#request-demo-modal">Get a demo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
